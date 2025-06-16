@@ -1,0 +1,30 @@
+{
+  "name": "nodejs-hw-mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index/js",
+    "start": "node src/index/js",
+    "lint": "eslint src/**/*.js"
+  },
+  "keywords": [],
+  "author": "Anna_Ivanova <anyutashine38@gmail.com>",
+  "license": "ISC",
+
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "eslint": "^9.29.0",
+    "globals": "^16.2.0",
+    "nodemon": "^3.1.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anymaiz/nodejs-hw-mongodb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Anymaiz/nodejs-hw-mongodb/issues"
+  },
+  "homepage": "https://github.com/Anymaiz/nodejs-hw-mongodb#readme"
+}
