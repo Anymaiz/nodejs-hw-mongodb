@@ -23,7 +23,7 @@ export const setupServer = () => {
 
   app.get('/', (req, res) => {
     res.json({
-      message: 'Your API is connected',
+      message: 'Your API is connected!',
     });
   });
 
