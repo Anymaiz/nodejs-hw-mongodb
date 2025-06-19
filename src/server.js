@@ -4,7 +4,8 @@ import cors from 'cors';
 import { envVal } from './utils/getEnvVar.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
-import contactsRouter from './routers/contacts.js';
+import router from './routers/index.js';
+import cookieParser from 'cookie-parser';
 
 const PORT = Number(envVal('PORT', '3000'));
 
@@ -13,6 +14,7 @@ export const setupServer = () => {
 
   app.use(cors());
   app.use(express.json());
+  app.use(cookieParser());
   app.use(
     pino({
       transport: {
@@ -27,7 +29,7 @@ export const setupServer = () => {
     });
   });
 
-  app.use(contactsRouter);
+  app.use(router);
   app.use(errorHandler);
   app.use(notFoundHandler);
 
