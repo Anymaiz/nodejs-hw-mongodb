@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 import { randomBytes } from 'crypto';
-import { UsersCollection } from '../db/models/user.js';
+import { UsersCollection } from '../models/user.js';
 import createHttpError from 'http-errors';
-import { SessionsCollection } from '../db/models/session.js';
+import { SessionsCollection } from '../models/session.js';
 import { FIFTEEN_MINUTES, REFRESH_TOKEN } from '../constants/index.js';
 
 export const registerUser = async (payload) => {
