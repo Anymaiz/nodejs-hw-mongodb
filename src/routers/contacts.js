@@ -24,26 +24,26 @@ contactsRouter.get('/', ctrlWrapper(getAllContactsController));
 contactsRouter.get(
   '/:contactId',
   isValidId,
-  ctrlWrapper(getContactByIdController)
+  ctrlWrapper(getContactByIdController),
 );
 
 contactsRouter.delete(
   '/:contactId',
   isValidId,
-  ctrlWrapper(deleteContactController)
+  ctrlWrapper(deleteContactController),
 );
 
 contactsRouter.post(
   '/',
   validateBody(createContactsSchema),
-  ctrlWrapper(createContactController)
+  ctrlWrapper(createContactController),
 );
 
 contactsRouter.patch(
   '/:contactId',
   isValidId,
   validateBody(updateContactsSchema),
-  ctrlWrapper(patchContactController)
+  ctrlWrapper(patchContactController),
 );
 
 export default contactsRouter;
