@@ -12,9 +12,15 @@ const PORT = Number(envVal('PORT', '3000'));
 export const setupServer = () => {
   const app = express();
 
+  app.use(
+    express.json({
+      type: ['application/json', 'application/vnd.api+json'],
+    }),
+  );
   app.use(cors());
-  app.use(express.json());
+
   app.use(cookieParser());
+
   app.use(
     pino({
       transport: {
@@ -30,11 +36,13 @@ export const setupServer = () => {
   });
 
   app.use(router);
+
   app.use(errorHandler);
+
   app.use(notFoundHandler);
 
   app.listen(PORT, () => {
-    console.log(`Server is running on  port  ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
   });
 };
 
