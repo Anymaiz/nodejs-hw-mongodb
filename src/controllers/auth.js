@@ -49,7 +49,7 @@ const setupSession = (res, session) => {
   });
 };
 
-export const refreshUserController = async (req, res) => {
+export const refreshUserSessionController = async (req, res) => {
   const session = await refreshUser({
     sessionId: req.cookies.sessionId,
     refreshToken: req.cookies.refreshToken,
