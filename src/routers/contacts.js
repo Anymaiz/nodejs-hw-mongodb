@@ -16,34 +16,35 @@ import {
 import { isValidId } from '../middlewares/isValidId.js';
 import { authenticate } from '../middlewares/authenticate.js';
 
-const contactsRouter = Router();
+const router = Router();
 
-contactsRouter.use(authenticate);
-contactsRouter.get('/', ctrlWrapper(getAllContactsController));
+router.use(authenticate);
 
-contactsRouter.get(
+router.get('/', ctrlWrapper(getAllContactsController));
+
+router.get(
   '/:contactId',
   isValidId,
   ctrlWrapper(getContactByIdController),
 );
 
-contactsRouter.delete(
+router.delete(
   '/:contactId',
   isValidId,
   ctrlWrapper(deleteContactController),
 );
 
-contactsRouter.post(
+router.post(
   '/',
   validateBody(createContactsSchema),
   ctrlWrapper(createContactController),
 );
 
-contactsRouter.patch(
+router.patch(
   '/:contactId',
   isValidId,
   validateBody(updateContactsSchema),
   ctrlWrapper(patchContactController),
 );
 
-export default contactsRouter;
+export default router;
