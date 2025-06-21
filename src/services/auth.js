@@ -98,11 +98,9 @@ export const logoutUser = async (sessionId) => {
 
 export const requestResetToken = async (email) => {
   const user = await UsersCollection.findOne({ email });
-
   if (!user) {
     throw createHttpError(404, 'User not found!');
   }
-
   const resetToken = jwt.sign(
     {
       sub: user._id,
@@ -110,7 +108,7 @@ export const requestResetToken = async (email) => {
     },
     envVal('JWT_SECRET'),
     {
-      expiresIn: '5m',
+      expiresIn: '15m',
     },
   );
 
@@ -129,21 +127,13 @@ export const requestResetToken = async (email) => {
     name: user.name,
     link: `${envVal('APP_DOMAIN')}/reset-password?token=${resetToken}`,
   });
-
-  try {
     await sendEmail({
       from: envVal(SMTP.SMTP_FROM),
       to: email,
       subject: 'Reset your password',
       html,
     });
-  } catch {
-    throw createHttpError(
-      500,
-      'Failed to send the email, please try again later.',
-    );
-  }
-};
+  };
 
 export const resetPassword = async (payload) => {
   let entries;
@@ -160,6 +150,7 @@ export const resetPassword = async (payload) => {
     email: entries.email,
     _id: entries.sub,
   });
+
   if (!user) {
     throw createHttpError(404, 'User not found!');
   }
