@@ -1,0 +1,12 @@
+description: Reset token is expired or invalid
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 401
+        message:
+          type: string
+          example: Token is expired or invalid.

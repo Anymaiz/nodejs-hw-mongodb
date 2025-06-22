@@ -1,0 +1,15 @@
+type: object
+required:
+  - email
+  - password
+properties:
+  email:
+    type: string
+    format: email
+    example: user@example.com
+  password:
+    type: string
+    format: password
+    minLength: 6
+    pattern: "^[a-zA-Z0-9]{6,30}$"
+    example: mySecret123
