@@ -1,0 +1,53 @@
+tags:
+  - Auth
+summary: Register a new user
+operationId: registerUser
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        $ref: ../../components/schemas/RegisterUser.yaml
+responses:
+  "201":
+    description: User created successfully
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: User created successfully
+            data:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  example: 684ebc379bbb7398b0727942
+                name:
+                  type: string
+                  example: Tetiana
+                email:
+                  type: string
+                  format: email
+                  example: tetiana23@gmail.com
+                role:
+                  type: string
+                  enum: [user, admin]
+                  example: user
+                createdAt:
+                  type: string
+                  format: date-time
+                  example: "2025-06-15T12:27:35.219Z"
+                updatedAt:
+                  type: string
+                  format: date-time
+                  example: "2025-06-15T12:27:35.219Z"
+  "409":
+    $ref: ../../components/responses/Conflict.yaml
+  "500":
+    $ref: "../../components/responses/InternalServerError.yaml"

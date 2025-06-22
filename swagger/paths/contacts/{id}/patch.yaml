@@ -1,0 +1,59 @@
+tags:
+  - Contacts
+summary: Update contact by ID
+operationId: updateContact
+description: Updates an existing contact by its ID.
+security:
+  - bearerAuth: []
+parameters:
+  - $ref: "../../../components/parameters/ContactId.yaml"
+requestBody:
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            example: Petro Duksin
+          phoneNumber:
+            type: string
+            example: "+1234564567"
+          email:
+            type: string
+            format: email
+            example: "petro.duksin@example.com"
+          contactType:
+            type: string
+            enum: [work, home, personal]
+            example: work
+          isFavourite:
+            type: boolean
+            example: false
+          photo:
+            type: string
+            format: binary
+responses:
+  "200":
+    description: Contact updated
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully updated a contact!
+            data:
+              $ref: "../../../components/schemas/Contact.yaml"
+
+  "404":
+    $ref: "../../../components/responses/ContactNotFound.yaml"
+  "401":
+    $ref: "../../../components/responses/UnauthorizedResetToken.yaml"
+  "500":
+    $ref: "../../../components/responses/InternalServerError.yaml"

@@ -1,0 +1,13 @@
+tags:
+  - Auth
+summary: Logout user and delete session
+operationId: logoutUser
+security:
+  - bearerAuth: []
+responses:
+  "204":
+    description: Successfully logged out
+  "401":
+    $ref: ../../components/responses/UnauthorizedToken.yaml
+  "500":
+    $ref: "../../components/responses/InternalServerError.yaml"
