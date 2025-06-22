@@ -9,7 +9,7 @@ properties:
   _id:
     description: 'Contact`s id'
     type: string
-    example: '684e12069580d0fa4fe61a32'
+    example: '684e12069580d0fa4fe61a33'
   name:
     description: 'Contact`s name'
     type: string
