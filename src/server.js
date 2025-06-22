@@ -16,10 +16,7 @@ export const setupServer = () => {
 
   app.use(
     express.json({
-      type: [
-        'application/json',
-        'application/vnd.api+json'
-      ],
+      type: ['application/json','application/vnd.api+json'],
     }),
   );
   app.use(cors());
