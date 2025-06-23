@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": "https://hw6-email-and-images-qb0w.onrender.com"
+      "url": "https://hw7-swagger-mzph.onrender.com"
     }
   ],
   "security": [
@@ -875,7 +875,7 @@
           "_id": {
             "description": "Contact`s id",
             "type": "string",
-            "example": "684e12069580d0fa4fe61a32"
+            "example": "684e12069580d0fa4fe61a33"
           },
           "name": {
             "description": "Contact`s name",
